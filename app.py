@@ -22,7 +22,9 @@ import joblib
 import pdfplumber
 import re
 import io   
-from config import API_KEY
+import streamlit as st
+
+
 
 # NEW: needed to build the PDF report in memory
 
@@ -385,6 +387,7 @@ def get_knowledge_context(missing_skills, knowledge_df):
 # -------------------------------------------------
 # Create OpenRouter Client
 # -------------------------------------------------
+API_KEY = st.secrets["OPENROUTER_API_KEY"]
 def get_openrouter_client(api_key):
     return OpenAI(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
 
